@@ -1,0 +1,7 @@
+{
+  "name": "myPassword",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

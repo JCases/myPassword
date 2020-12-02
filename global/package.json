@@ -1,0 +1,11 @@
+{
+  "name": "my-password",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.d.ts",
+  "scripts": {
+    "pub": "npm publish --access public"
+  },
+  "author": "",
+  "license": "ISC"
+}
