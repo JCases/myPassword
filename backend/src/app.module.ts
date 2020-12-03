@@ -5,10 +5,11 @@ import {
   RequestMethod,
 } from '@nestjs/common';
 import { AppController } from './app.controller';
+import { UserModule } from './user/user.module';
 import { LoggerMiddleware } from './shared/middleware/logger.middleware';
 
 @Module({
-  imports: [],
+  imports: [UserModule],
   controllers: [AppController],
   providers: [],
 })

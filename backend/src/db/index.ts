@@ -23,25 +23,18 @@ class DB {
 
   public async init() {
     await this.createExtensions();
-    await this.setAssociations();
     await this.sequelize.sync(this.options);
     await runMigrations(this.sequelize, { showLogs: true });
-    // await this.createDefaultValues();
+    await this.createDefaultValues();
   }
 
-  // private async createDefaultValues() {
-  //   if (!PROD) {
-  //     const setDefaultValues = require('./defaultValues').setDefaultValues;
-  //     await setDefaultValues();
-  //   } else {
-  //     console.log(Colors.FgRed, 'PROD MODE: NO DEFAULT VALUE', Colors.Reset);
-  //   }
-  // }
-
-  private async setAssociations() {
-    console.log(Colors.FgBlue, 'SETTING THE ASSOCIATIONS...', Colors.Reset);
-    const setAssociations = require('./associations').setAssociations;
-    await setAssociations();
+  private async createDefaultValues() {
+    if (!PROD) {
+      const setDefaultValues = require('./defaultValues').setDefaultValues;
+      await setDefaultValues();
+    } else {
+      console.log(Colors.FgRed, 'PROD MODE: NO DEFAULT VALUE', Colors.Reset);
+    }
   }
 
   private setSequelize() {
