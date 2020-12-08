@@ -5,8 +5,12 @@ import { db } from '../db';
 
 export class User extends BaseModel<IUser> implements IUser {
   public email!: string;
-  public firstName!: string;
-  public lastName!: string;
+  public name!: string;
+  public phoneNumber!: string;
+
+  public image!: string;
+  public idGoogle!: string;
+
   public token!: string;
 
   public root!: boolean;
@@ -29,9 +33,13 @@ User.init(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    firstName: { type: DataTypes.STRING },
-    lastName: { type: DataTypes.STRING },
+    name: { type: DataTypes.STRING },
     email: { type: DataTypes.STRING, unique: true },
+    phoneNumber: { type: DataTypes.STRING },
+
+    image: { type: DataTypes.STRING },
+    idGoogle: { type: DataTypes.STRING, unique: true },
+
     token: { type: DataTypes.STRING, unique: true },
 
     isLogged: { type: DataTypes.DATE },

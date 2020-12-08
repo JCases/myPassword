@@ -8,9 +8,12 @@ export const setDefaultValues = async () => {
   if (!PROD) {
     const create = await User.findOrCreate({
       where: {
-        firstName: 'Javier',
-        lastName: 'Cases Sempere',
+        name: 'Javier Cases Sempere',
         email: 'javi@',
+        phoneNumber: '601001638',
+        image:
+          'https://lh3.googleusercontent.com/a-/AOh14GhmbaJwqIABNe6psMxxRVz6zLglnwoEQAqI3kvMRQ=s96-c',
+        idGoogle: '117160238503177117957',
         token: 'test',
         root: true,
       },
@@ -23,9 +26,11 @@ export const setDefaultValues = async () => {
       const usersToCreate: IUser[] = [];
       for (let i = 0; i < 4; i++) {
         usersToCreate.push({
-          firstName: faker.name.firstName(),
-          lastName: faker.name.lastName(),
+          name: faker.name.firstName(),
           email: faker.internet.email().toLocaleLowerCase(),
+          phoneNumber: faker.phone.phoneNumber(),
+          image: faker.image.avatar(),
+          idGoogle: faker.random.uuid(),
           token: faker.random.uuid(),
         });
       }
