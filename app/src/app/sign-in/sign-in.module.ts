@@ -12,9 +12,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild([
-      { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
-      { path: 'sign-in', component: SignInPage },
-      { path: '**', redirectTo: 'sign-in', pathMatch: 'full' },
+      { path: '', component: SignInPage },
+      { path: '**', redirectTo: '', pathMatch: 'full' },
     ]),
   ],
   declarations: [SignInPage],

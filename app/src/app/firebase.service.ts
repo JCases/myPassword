@@ -64,8 +64,6 @@ export class FirebaseAuthService {
     const userModel = new ProfileModel();
     let providerData: any = this.currentUser.providerData[0];
 
-    console.log(providerData);
-
     userModel.image = providerData.photoURL.split('=')[0];
     userModel.name =
       providerData.name || providerData.displayName || "What's your name?";

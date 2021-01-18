@@ -48,7 +48,7 @@ export class SignInPage {
     await this.authServiceBack.login({ user });
     await this.deviceInfoService.setClientDeviceInfo();
     this.ngZone.run(() => {
-      this.router.navigate(['profile']);
+      this.router.navigate(['']);
     });
   }
 

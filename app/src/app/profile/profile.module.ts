@@ -28,20 +28,34 @@ const routes: Routes = [
       {
         path: 'create-password',
         loadChildren: () =>
-          import('./create-password/create.module').then(
+          import('../create-password/create.module').then(
             (m) => m.CreatePageModule
           ),
       },
       {
         path: 'password',
         loadChildren: () =>
-          import('./create-password/create.module').then(
-            (m) => m.CreatePageModule
+          import('../password/password.module').then(
+            (m) => m.PasswordPageModule
+          ),
+      },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('../profileInfo/profileInfo.module').then(
+            (m) => m.ProfileInfoPageModule
+          ),
+      },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('../settings/settings.module').then(
+            (m) => m.SettingsPageModule
           ),
       },
       {
         path: '',
-        redirectTo: '/create-password',
+        redirectTo: '/password',
         pathMatch: 'full',
       },
     ],

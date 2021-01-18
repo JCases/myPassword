@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProfileModel } from './profile.model';
 import { FirebaseAuthService } from '../firebase.service';
 import { AuthService } from '../auth/auth.service';
+
+import { ProfileModel } from './profile.model';
 
 @Component({
   selector: 'app-profile',
@@ -22,6 +23,7 @@ export class ProfilePage implements OnInit {
     this.route.data.subscribe(
       (result) => {
         this.user = result['data'];
+        localStorage.setItem('user', JSON.stringify(this.user));
       },
       (err) => {}
     );

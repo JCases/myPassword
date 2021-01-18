@@ -4,9 +4,8 @@ import { IsLogged } from './shared/guard/logged.guard';
 import { NotLogged } from './shared/guard/not-logged.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'main', pathMatch: 'full' },
   {
-    path: 'main',
+    path: '',
     canActivate: [IsLogged],
     loadChildren: () =>
       import('./profile/profile.module').then((m) => m.ProfilePageModule),
@@ -17,7 +16,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./sign-in/sign-in.module').then((m) => m.SignInPageModule),
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
