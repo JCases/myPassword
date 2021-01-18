@@ -1,16 +1,57 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar></ion-toolbar>
+  <ion-toolbar>
+    <ion-title class="toolbar-items">MyPassword</ion-title>
+    <ion-buttons class="toolbar-items" slot="end">
+      <ion-button (click)="signOut()">
+        <ion-icon slot="icon-only" name="help-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="sign-in-content">
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <div class="slide">
+        <img src="./../../assets/images/slide-1.png" />
+        <h2>Welcome</h2>
+        <p>
+          The <b>ionic conference app</b> is a practical preview of the ionic
+          framework in action, and a demonstration of proper code use.
+        </p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide">
+        <img src="./../../assets/images/slide-2.png" />
+        <h2>Welcome</h2>
+        <p>
+          The <b>ionic conference app</b> is a practical preview of the ionic
+          framework in action, and a demonstration of proper code use.
+        </p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide">
+        <img src="./../../assets/images/slide-3.png" />
+        <h2>Welcome</h2>
+        <p>
+          The <b>ionic conference app</b> is a practical preview of the ionic
+          framework in action, and a demonstration of proper code use.
+        </p>
+      </div>
+    </ion-slide>
+  </ion-slides>
   <h2 class="auth-title">Sign In with Google</h2>
   <div class="social-auth-options">
     <ion-button
-      class="social-auth-btn google-auth-btn"
+      class="social-auth-btn"
       color="danger"
       expand="block"
       (click)="googleSignIn()"
-      >Google Sign In</ion-button
     >
+      <ion-icon name="logo-google" class="icon-google"></ion-icon>
+      Iniciar Sesión
+    </ion-button>
   </div>
 </ion-content>

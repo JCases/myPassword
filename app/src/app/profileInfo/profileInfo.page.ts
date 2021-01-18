@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ProfileModel } from './../profile/profile.model';
+import { ProfileModel } from '../main/profile.model';
 
 @Component({
   selector: 'profile',

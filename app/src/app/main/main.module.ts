@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePage } from './profile.page';
-import { RouterModule, Routes } from '@angular/router';
-import { ProfilePageResolver } from './profile.resolver';
+import { MainPage } from './main.page';
+import { MainPageResolver } from './main.resolver';
 
 import {
   AngularFireAuthGuard,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['sign-in']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth']);
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage,
+    component: MainPage,
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     resolve: {
-      data: ProfilePageResolver,
+      data: MainPageResolver,
     },
     children: [
       {
@@ -69,7 +69,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [ProfilePage],
-  providers: [ProfilePageResolver],
+  declarations: [MainPage],
+  providers: [MainPageResolver],
 })
-export class ProfilePageModule {}
+export class MainPageModule {}

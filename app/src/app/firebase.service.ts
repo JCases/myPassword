@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, Subject, from } from 'rxjs';
 import { Platform } from '@ionic/angular';
 import firebase from 'firebase/app';
-import { ProfileModel } from './profile/profile.model';
+import { ProfileModel } from './main/profile.model';
 import { filter, map, take } from 'rxjs/operators';
 
 import { IUser } from '../../../global';

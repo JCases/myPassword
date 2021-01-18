@@ -1,3 +1,7 @@
+.toolbar-items {
+  margin: 0 1rem;
+}
+
 .sign-in-content {
   text-align: center;
   --padding-bottom: 16px;
@@ -7,49 +11,55 @@
 
   .auth-title {
     font-weight: bold;
-    margin-bottom: 64px;
+    margin-bottom: 2rem;
     letter-spacing: 0.6px;
   }
 
   .social-auth-options {
-    .options-divider {
-      text-align: center;
-    }
+    display: flex;
+    justify-content: center;
   }
 
-  .inputs-list {
-    .input-item {
-      --padding-start: 0px;
-      --padding-end: 0px;
-      --inner-padding-end: 0px;
-    }
+  .social-auth-btn {
+    width: min-content;
   }
 
-  .error-container {
-    .error-message {
-      margin: 16px 0px;
-      display: flex;
-      align-items: center;
-      color: var(--ion-color-danger);
-      font-size: 14px;
-
-      ion-icon {
-        font-size: 16px;
-        padding-inline-end: 8px;
-      }
-    }
+  .icon-google {
+    padding: 0.2rem;
+    margin-right: 1rem;
   }
+}
 
-  .sign-in-btn {
-    margin: 16px 0px;
-  }
+ion-slides {
+  height: 80%;
+}
 
-  .sign-up-btn-wrapper {
-    justify-content: flex-end;
-    align-items: center;
+.swiper-slide {
+  display: block;
+}
 
-    .sign-up-btn {
-      --padding-end: 0px;
-    }
-  }
+.swiper-slide h2 {
+  margin-top: 2.8rem;
+}
+
+.swiper-slide img {
+  max-height: 50%;
+  max-width: 80%;
+  margin: 60px 0 40px;
+  pointer-events: none;
+}
+
+b {
+  font-weight: 500;
+}
+
+p {
+  padding: 0 40px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ion-color-step-600, #60646b);
+}
+
+p b {
+  color: var(--ion-text-color, #000000);
 }

@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     canActivate: [IsLogged],
     loadChildren: () =>
-      import('./profile/profile.module').then((m) => m.ProfilePageModule),
+      import('./main/main.module').then((m) => m.MainPageModule),
   },
   {
     path: 'auth',

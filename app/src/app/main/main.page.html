@@ -1,9 +1,18 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="auth" (click)="signOut()"></ion-back-button>
+    <div class="toolbar-items" slot="start">
+      <ion-chip (click)="profile()">
+        <ion-avatar>
+          <img src="{{user.image}}" />
+        </ion-avatar>
+        <ion-label>{{user.name}}</ion-label>
+      </ion-chip>
+    </div>
+    <ion-buttons class="toolbar-items" slot="end">
+      <ion-button (click)="signOut()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title>Bienvenido {{user.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
