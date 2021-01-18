@@ -13,12 +13,5 @@ export interface IUser extends IBase {
   root?: boolean;
   isLogged?: Date | null;
 
-  appVersion?: string;
-  appBuild?: string;
-  operatingSystem?: string;
-  osVersion?: string;
-  platform?: string;
-  model?: string;
-  manufacturer?: string;
   uuid?: string;
 }

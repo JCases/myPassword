@@ -3,14 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInPage } from './sign-in.page';
-import { Routes, RouterModule } from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: SignInPage,
-  },
-];
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -18,7 +11,11 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild([
+      { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
+      { path: 'sign-in', component: SignInPage },
+      { path: '**', redirectTo: 'sign-in', pathMatch: 'full' },
+    ]),
   ],
   declarations: [SignInPage],
 })

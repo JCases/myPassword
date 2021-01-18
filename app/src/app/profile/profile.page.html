@@ -1,0 +1,34 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="auth" (click)="signOut()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Bienvenido {{user.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile-content">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="create-password">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>Añadir Contraseña</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="passwords">
+        <ion-icon name="archive"></ion-icon>
+        <ion-label>Contraseñas</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="profile">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="settings">
+        <ion-icon name="settings"></ion-icon>
+        <ion-label>Ajustes</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

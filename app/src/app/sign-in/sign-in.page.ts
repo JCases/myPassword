@@ -4,6 +4,10 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseAuthService } from '../firebase.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
+import { DeviceInfoService } from '../shared/deviceInfo.service';
+import { IUser } from '../../../../global';
+import { IGoogle } from '../shared/interfaces/google';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,6 +20,8 @@ export class SignInPage {
   authRedirectResult: Subscription;
 
   constructor(
+    private authServiceBack: AuthService,
+    private deviceInfoService: DeviceInfoService,
     public angularFire: AngularFireAuth,
     public router: Router,
     private ngZone: NgZone,
@@ -23,39 +29,46 @@ export class SignInPage {
   ) {
     this.signInForm = new FormGroup({});
 
-    // Get firebase authentication redirect result invoken when using signInWithRedirect()
-    // signInWithRedirect() is only used when client is in web but not desktop
     this.authRedirectResult = this.authService
       .getRedirectResult()
       .subscribe((result) => {
         if (result.user) {
-          this.redirectLoggedUserToProfilePage();
+          const token = result.credential.accessToken;
+          const user = this.getProfile(result.user, token);
+          this.login(user);
         } else if (result.error) {
           this.submitError = result.error;
         }
       });
   }
 
-  // Once the auth provider finished the authentication flow, and the auth redirect completes,
-  // redirect the user to the profile page
-  redirectLoggedUserToProfilePage() {
-    // As we are calling the Angular router navigation inside a subscribe method, the navigation will be triggered outside Angular zone.
-    // That's why we need to wrap the router navigation call inside an ngZone wrapper
+  ngOnDestroy() {}
+
+  async login(user: IUser) {
+    await this.authServiceBack.login({ user });
+    await this.deviceInfoService.setClientDeviceInfo();
     this.ngZone.run(() => {
       this.router.navigate(['profile']);
     });
   }
 
-  googleSignIn() {
-    this.authService
-      .signInWithGoogle()
-      .then((result: any) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const token = result.credential.accessToken;
-        this.redirectLoggedUserToProfilePage();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  async googleSignIn() {
+    const result = await this.authService.signInWithGoogle();
+    const token = result.credential.accessToken;
+    const user = this.getProfile(result.user, token);
+    await this.login(user);
+  }
+
+  getProfile(user: IGoogle, token: string): IUser {
+    return {
+      email: user.email,
+      name: user.displayName,
+      phoneNumber: user.phoneNumber,
+
+      image: user.photoURL,
+      idGoogle: user.uid,
+
+      token,
+    };
   }
 }

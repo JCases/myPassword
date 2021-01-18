@@ -7,6 +7,7 @@ import {
   Post,
   Req,
   UseGuards,
+  Put,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { IUser } from './../../../global';
@@ -19,11 +20,12 @@ export class UserController {
   constructor(protected userService: UserService) {}
 
   @Post('login')
-  public async login(@Body() body: IUser) {
-    if (!body.email)
-      throw new HttpException('Email es requerido', HttpStatus.NOT_ACCEPTABLE);
+  public async login(@Body() body: IRequest) {
+    if (!body.user) {
+      throw new HttpException('Datos requeridos', HttpStatus.NOT_ACCEPTABLE);
+    }
     return {
-      token: encode(await this.userService.login(body)),
+      token: encode(await this.userService.login(body.user)),
     };
   }
 
@@ -31,13 +33,6 @@ export class UserController {
   @UseGuards(IsLoggedGuard)
   public token() {
     return true;
-  }
-
-  @Post('register')
-  public async register(@Body() body: IUser) {
-    return {
-      token: encode(await this.userService.register(body)),
-    };
   }
 
   @Get('rehydrate')

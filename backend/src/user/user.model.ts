@@ -16,13 +16,6 @@ export class User extends BaseModel<IUser> implements IUser {
   public root!: boolean;
   public isLogged!: Date;
 
-  public appVersion!: string;
-  public appBuild!: string;
-  public operatingSystem!: string;
-  public osVersion!: string;
-  public platform!: string;
-  public model!: string;
-  public manufacturer!: string;
   public uuid!: string;
 }
 
@@ -45,13 +38,6 @@ User.init(
     isLogged: { type: DataTypes.DATE },
     root: { type: DataTypes.BOOLEAN, defaultValue: false },
 
-    appVersion: { type: DataTypes.STRING },
-    appBuild: { type: DataTypes.STRING },
-    operatingSystem: { type: DataTypes.STRING },
-    osVersion: { type: DataTypes.STRING },
-    platform: { type: DataTypes.STRING },
-    model: { type: DataTypes.STRING },
-    manufacturer: { type: DataTypes.STRING },
     uuid: { type: DataTypes.STRING },
   },
   {

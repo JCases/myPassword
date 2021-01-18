@@ -25,10 +25,8 @@ export class FirebaseAuthService {
       }
     });
 
-    // when using signInWithRedirect, this listens for the redirect results
     this.angularFireAuth.getRedirectResult().then(
       (result) => {
-        // FIXME: result.credential.accessToken gives you the Provider Access Token. You can use it to access the Provider API.
         if (result.user) {
           this.currentUser = result.user;
           this.redirectResult.next(result);
@@ -90,10 +88,9 @@ export class FirebaseAuthService {
     return from(this.angularFireAuth.signOut());
   }
 
-  socialSignIn(providerName: string, scopes?: Array<string>): Promise<any> {
-    const provider = new firebase.auth.OAuthProvider(providerName);
+  socialSignIn(scopes?: Array<string>): Promise<any> {
+    const provider = new firebase.auth.GoogleAuthProvider();
 
-    // FIXME: Add any permission scope you need
     if (scopes) {
       scopes.forEach((scope) => {
         provider.addScope(scope);
@@ -108,8 +105,8 @@ export class FirebaseAuthService {
   }
 
   signInWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
     const scopes = ['profile', 'email'];
-    return this.socialSignIn(provider.providerId, scopes);
+    return this.socialSignIn(scopes);
   }
 }

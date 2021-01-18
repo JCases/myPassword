@@ -18,67 +18,16 @@ export class UserService {
       });
     }
   }
-  async setPhoneInfo(user: IUser, id: string) {
-    const {
-      appBuild,
-      appVersion,
-      manufacturer,
-      operatingSystem,
-      platform,
-      uuid,
-      osVersion,
-      model,
-    } = user;
-    try {
-      return await User.update(
-        {
-          appBuild,
-          appVersion,
-          manufacturer,
-          operatingSystem,
-          platform,
-          uuid,
-          osVersion,
-          model,
-        },
-        { where: { id } },
-      );
-    } catch (e) {
-      throw new HttpException(
-        'No se ha podido guardar la información, intentalo más adelante',
-        HttpStatus.NOT_FOUND,
-      );
-    }
-  }
   async login(user: IUser) {
     const userDB = await User.findOne({
-      where: { email: user.email! },
+      where: { email: user.email!, idGoogle: user.idGoogle! },
       attributes: ['email', 'id'],
     });
     if (userDB) {
-      return userDB;
-    }
-    throw new HttpException('Usuario incorrecto', HttpStatus.UNAUTHORIZED);
-  }
-
-  async rehydrate(userToken: IUser) {
-    if (userToken) {
-      const user = await User.findByPk(userToken.id, {
-        attributes: { exclude: ['password', 'deletedAt'] },
-      });
-
-      if (user) return user;
-      throw new HttpException('No estás logueado', HttpStatus.UNAUTHORIZED);
-    }
-    throw new HttpException('No estás logueado', HttpStatus.UNAUTHORIZED);
-  }
-
-  async register(user: IUser) {
-    const userDB = await User.findOne({
-      where: { email: user.email! },
-      attributes: ['id'],
-    });
-    if (!userDB) {
+      const update = await userDB.update({ token: user.token });
+      if (update) return userDB;
+      throw new HttpException('Usuario incorrecto', HttpStatus.UNAUTHORIZED);
+    } else {
       delete user.id;
       delete user.root;
       try {
@@ -90,6 +39,17 @@ export class UserService {
         );
       }
     }
-    throw new HttpException('El email ya esta en uso', HttpStatus.FORBIDDEN);
+  }
+
+  async rehydrate(userToken: IUser) {
+    if (userToken) {
+      const user = await User.findByPk(userToken.id, {
+        attributes: { exclude: ['deletedAt'] },
+      });
+
+      if (user) return user;
+      throw new HttpException('No estás logueado', HttpStatus.UNAUTHORIZED);
+    }
+    throw new HttpException('No estás logueado', HttpStatus.UNAUTHORIZED);
   }
 }
