@@ -24,27 +24,27 @@ const routes: Routes = [
     resolve: {
       data: ProfilePageResolver,
     },
-    // children: [
-    //   {
-    //     path: 'create-password',
-    //     loadChildren: () =>
-    //       import('./create-password/create.module').then(
-    //         (m) => m.CreatePageModule
-    //       ),
-    //   },
-    //   {
-    //     path: 'password',
-    //     loadChildren: () =>
-    //       import('./create-password/create.module').then(
-    //         (m) => m.CreatePageModule
-    //       ),
-    //   },
-    //   {
-    //     path: '',
-    //     redirectTo: '/create-password',
-    //     pathMatch: 'full',
-    //   },
-    // ],
+    children: [
+      {
+        path: 'create-password',
+        loadChildren: () =>
+          import('./create-password/create.module').then(
+            (m) => m.CreatePageModule
+          ),
+      },
+      {
+        path: 'password',
+        loadChildren: () =>
+          import('./create-password/create.module').then(
+            (m) => m.CreatePageModule
+          ),
+      },
+      {
+        path: '',
+        redirectTo: '/create-password',
+        pathMatch: 'full',
+      },
+    ],
   },
 ];
 
