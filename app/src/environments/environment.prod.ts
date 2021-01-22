@@ -1,15 +1,17 @@
 export const environment = {
   production: true,
-  server_url: 'https://192.168.18.5:3000', // TODO: CAMBIAR
+  server_url: 'https://cmenu.es',
   token_name: 'id_token',
   go_to_name: 'go_to',
   logged_as: 'logged_as',
   firebase: {
-    apiKey: 'AIzaSyB_hifCjvJb7jf3hnZozfzlnJQ6N0iYuXI',
-    authDomain: 'ionic5-firebase-authentication.firebaseapp.com',
-    databaseURL: 'https://ionic5-firebase-authentication.firebaseio.com',
-    projectId: 'ionic5-firebase-authentication',
-    // storageBucket: '<your-storage-bucket>',
-    // messagingSenderId: '<your-messaging-sender-id>',
+    apiKey: 'AIzaSyAbdSDpT1D62O35JDRo6-twMI4Y5G2xmp4',
+    authDomain: 'mypassword-297516.firebaseapp.com',
+    databaseURL:
+      'https://mypassword-297516-default-rtdb.europe-west1.firebasedatabase.app',
+    projectId: 'mypassword-297516',
+    storageBucket: 'mypassword-297516.appspot.com',
+    messagingSenderId: '308585314470',
+    appId: '1:308585314470:web:5867b181ee1d42446f9c67',
   },
 };
