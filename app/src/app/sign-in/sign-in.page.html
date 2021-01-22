@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title class="toolbar-items">MyPassword</ion-title>
     <ion-buttons class="toolbar-items" slot="end">
-      <ion-button (click)="signOut()">
+      <ion-button (click)="help()">
         <ion-icon slot="icon-only" name="help-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -10,34 +10,29 @@
 </ion-header>
 
 <ion-content class="sign-in-content">
-  <ion-slides pager="true" [options]="slideOpts">
+  <ion-slides pager="true">
     <ion-slide>
       <div class="slide">
         <img src="./../../assets/images/slide-1.png" />
-        <h2>Welcome</h2>
-        <p>
-          The <b>ionic conference app</b> is a practical preview of the ionic
-          framework in action, and a demonstration of proper code use.
-        </p>
+        <h2>Seguridad</h2>
+        <p>Usamos la <b>tecnología de Google</b>.</p>
       </div>
     </ion-slide>
     <ion-slide>
       <div class="slide">
         <img src="./../../assets/images/slide-2.png" />
-        <h2>Welcome</h2>
+        <h2>Privacidad</h2>
         <p>
-          The <b>ionic conference app</b> is a practical preview of the ionic
-          framework in action, and a demonstration of proper code use.
+          <b>NO</b> guardamos ninguna <b>contraseña</b> en nuestros servidores.
         </p>
       </div>
     </ion-slide>
     <ion-slide>
       <div class="slide">
         <img src="./../../assets/images/slide-3.png" />
-        <h2>Welcome</h2>
+        <h2>Automatización</h2>
         <p>
-          The <b>ionic conference app</b> is a practical preview of the ionic
-          framework in action, and a demonstration of proper code use.
+          <b>Actualizaciones</b> en la <b>nube</b> para todos sus dispositivos.
         </p>
       </div>
     </ion-slide>

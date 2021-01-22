@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 
 import { FirebaseAuthService } from './firebase.service';
 import { Interceptor } from './shared/interceptor/interceptor.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { Interceptor } from './shared/interceptor/interceptor.service';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     StatusBar,

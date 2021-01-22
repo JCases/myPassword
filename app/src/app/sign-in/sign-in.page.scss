@@ -34,19 +34,16 @@ ion-slides {
   height: 80%;
 }
 
+.slide {
+  height: 80%;
+}
+
 .swiper-slide {
   display: block;
 }
 
 .swiper-slide h2 {
-  margin-top: 2.8rem;
-}
-
-.swiper-slide img {
-  max-height: 50%;
-  max-width: 80%;
-  margin: 60px 0 40px;
-  pointer-events: none;
+  margin: 0.2rem 0;
 }
 
 b {

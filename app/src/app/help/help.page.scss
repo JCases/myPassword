@@ -1,0 +1,20 @@
+.sign-in-content {
+  text-align: center;
+  --padding-bottom: 16px;
+  --padding-end: 16px;
+  --padding-start: 16px;
+  --padding-top: 16px;
+}
+
+.toolbar-items {
+  margin: 0 1rem;
+}
+
+:root {
+  --ion-safe-area-top: 20px;
+  --ion-safe-area-bottom: 22px;
+}
+
+.title {
+  font-size: x-large;
+}

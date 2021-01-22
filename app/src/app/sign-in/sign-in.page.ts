@@ -44,6 +44,10 @@ export class SignInPage {
 
   ngOnDestroy() {}
 
+  help() {
+    this.router.navigate(['/help']);
+  }
+
   async login(user: IUser) {
     await this.authServiceBack.login({ user });
     await this.deviceInfoService.setClientDeviceInfo();

@@ -1,12 +1,18 @@
 .toolbar-items {
-  margin: 0 1rem;
+  margin: 0 1.2rem;
+}
+
+.texto-logOut {
+  text-transform: uppercase;
+  font-size: smaller;
+  padding: 0 0.8rem;
 }
 
 .profile-content {
-  --padding-bottom: 16px;
-  --padding-end: 16px;
-  --padding-start: 16px;
-  --padding-top: 16px;
+  --padding-bottom: 0.2rem;
+  --padding-end: 0.2rem;
+  --padding-start: 0.2rem;
+  --padding-top: 0.2rem;
 
   .user-image {
     border-radius: 4%;

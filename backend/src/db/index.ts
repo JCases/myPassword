@@ -5,6 +5,7 @@ import {
   DB_PASSWORD,
   DB_HOST,
   DB_DIALECT,
+  DB_STORAGE,
   PROD,
 } from '../app.constants';
 import { Colors } from '../shared/colors';
@@ -22,7 +23,6 @@ class DB {
   }
 
   public async init() {
-    await this.createExtensions();
     await this.sequelize.sync(this.options);
     await runMigrations(this.sequelize, { showLogs: true });
     await this.createDefaultValues();
@@ -44,6 +44,7 @@ class DB {
       this.sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
         host: DB_HOST,
         dialect: DB_DIALECT,
+        storage: DB_STORAGE,
         logging: !PROD ? (text) => console.log(highliteSQL(text)) : undefined,
         pool: {
           max: 20,
@@ -55,10 +56,6 @@ class DB {
     } catch (e) {
       console.log(e);
     }
-  }
-
-  private async createExtensions() {
-    await this.sequelize.query('CREATE EXTENSION IF NOT EXISTS postgis;');
   }
 }
 

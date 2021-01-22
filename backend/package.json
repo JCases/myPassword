@@ -38,7 +38,8 @@
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.3",
     "sequelize": "^6.3.5",
-    "sequelize-do-migrations": "^1.0.23"
+    "sequelize-do-migrations": "^1.0.23",
+    "sqlite3": "^5.0.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.5.1",

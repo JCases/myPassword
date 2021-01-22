@@ -16,6 +16,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./sign-in/sign-in.module').then((m) => m.SignInPageModule),
   },
+  {
+    path: 'help',
+    canActivate: [NotLogged],
+    loadChildren: () =>
+      import('./help/help.module').then((m) => m.HelpPageModule),
+  },
 ];
 
 @NgModule({

@@ -6,7 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./password.page.scss'],
 })
 export class PasswordPage {
-  constructor() {}
+  private password: string[];
+  constructor() {
+    this.password = [
+      '1',
+      '2',
+      '3',
+      '3',
+      '3',
+      '',
+      '3',
+      '3',
+      '3',
+      '3',
+      '3',
+      '3',
+      '3',
+      ,
+      '3',
+    ];
+  }
 
   refreshPasswords(event) {
     setTimeout(() => {
